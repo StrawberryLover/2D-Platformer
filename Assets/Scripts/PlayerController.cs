@@ -61,15 +61,16 @@ public class PlayerController : MonoBehaviour {
 		sprite = GetComponent<SpriteRenderer> ();
 
 		state  = new GroundState (transform.gameObject);
+		input.x = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if      (Input.GetKey (KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  input.x = -1;
-		else if (Input.GetKey (KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) input.x = 1;
-		else                                        						   input.x = 0;
+		if      (Input.GetAxisRaw("Horizontal") > 0.5f)  input.x = 1;
+		else if (Input.GetAxisRaw("Horizontal") < -0.5f) input.x = -1;
+		else                                        	 input.x = 0;
 
-		if (Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.W)) {
+		if (Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.W) || Input.GetButtonDown ("Jump Controller")) {
 			if (isJumping) {
 				input.y += 1;
 				force = Mathf.Cos (((input.y * Mathf.PI) / 180));
