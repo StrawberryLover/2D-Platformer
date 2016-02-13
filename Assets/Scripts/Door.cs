@@ -19,7 +19,7 @@ public class Door : MonoBehaviour {
 
 	void  OnTriggerStay2D(Collider2D item) {
 		if (item.name == "Player") {
-			if (Input.GetKeyDown (KeyCode.E)) {
+			if (Input.GetButtonDown ("Activate") || Input.GetButtonDown ("C Activate")) {
 				anim.SetBool("Open", true);
 				Application.LoadLevel(toLocation);
 			}

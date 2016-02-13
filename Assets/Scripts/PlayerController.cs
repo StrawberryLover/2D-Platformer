@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 		else if (Input.GetAxisRaw("Horizontal") < -0.5f) input.x = -1;
 		else                                        	 input.x = 0;
 
-		if (Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.W) || Input.GetButtonDown ("Jump Controller")) {
+		if (Input.GetButtonDown ("Jump") || Input.GetButtonDown ("C Jump")) {
 			if (isJumping) {
 				input.y += 1;
 				force = Mathf.Cos (((input.y * Mathf.PI) / 180));
